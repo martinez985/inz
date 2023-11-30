@@ -76,7 +76,8 @@
                 android:layout_height="wrap_content"
                 android:text="Zakończ przejazd"
                 android:backgroundTint="#8A81072E"
-                app:cornerRadius="4dp"/>
+                app:cornerRadius="4dp"
+                android:visibility="gone"/>
         </LinearLayout>
 
     </LinearLayout>

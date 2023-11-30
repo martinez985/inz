@@ -42,9 +42,10 @@ public class AddressesActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(AddressesViewModel.class);
 
-        cityAdapter = new CityAdapter(new ArrayList<>(), new HashMap<>());
+
         loadedCityAdapter = new CityAdapter(new ArrayList<>(), new HashMap<>());
 
+        cityAdapter = new CityAdapter(new ArrayList<>(), new HashMap<>());
         RecyclerView recyclerView = findViewById(R.id.addressRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(cityAdapter);
@@ -71,25 +72,19 @@ public class AddressesActivity extends AppCompatActivity {
 
                 viewModel.fetchRouteData(token);
 
-                viewModel.setRouteClosedListener(new AddressesViewModel.RouteClosedListener() {
-                    @Override
-                    public void onRouteClosed() {
-
-                        finish();
-
-                    }
-                });
-
                 viewModel.getRouteIdLiveData().observe(AddressesActivity.this, new Observer<Integer>() {
                     @Override
                     public void onChanged(Integer routeId) {
                         if (routeId != null) {
+                            String token = readTokenFromSharedPreferences();
                             viewModel.endRoute(token, routeId);
+                            finish();
                         } else {
                             Log.e("AddressesActivity", "Błąd: IDroute jest null");
                         }
                     }
                 });
+
             }
         });
     }

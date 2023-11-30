@@ -65,9 +65,6 @@ public class AddressesViewModel extends ViewModel {
         return loadedPackagesByCityLiveData;
     }
 
-    public void setRouteClosedListener(RouteClosedListener listener) {
-        this.routeClosedListener = listener;
-    }
 
     private Map<String, List<DataPackage>> groupUnloadedPackagesByCity(List<DataPackage> dataPackages) {
         Map<String, List<DataPackage>> unloadedPackagesByCity = new HashMap<>();
@@ -139,10 +136,8 @@ public class AddressesViewModel extends ViewModel {
                     Log.e("EndRoute", "Błąd w odpowiedzi z serwera");
                 }
             }
-
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                // Handle failure
                 Log.e("AddressesActivity", "Błąd wysyłania danych na serwer", t);
             }
         });
@@ -168,7 +163,6 @@ public class AddressesViewModel extends ViewModel {
                     Log.e("FetchRouteData", "Błąd w odpowiedzi z serwera");
                 }
             }
-
             @Override
             public void onFailure(Call<Route> call, Throwable t) {
                 Log.e("FetchRouteData", "Błąd pobierania danych na serwer", t);

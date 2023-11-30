@@ -23,8 +23,11 @@ public class HomeViewModel extends ViewModel {
         repository.getRouteData(token, new Repository.IRouteDataResponse() {
             @Override
             public void onResponse(Route route) {
-                String displayText = "Model: " + route.getTruckModel() +
-                        "\nNumer rejestracyjny: " + route.getTruckReg();
+                String displayText ="Punkt startu: \n"+ route.getZipCode()+" " + route.getCity()+" " + route.getAddress() +
+                        "\nPunkt końcowy:\n" + route.getZipCodeEnd()+" " + route.getCityEnd()+" " + route.getAddressEnd() +
+                        "\nModel: " + route.getTruckModel() +
+                        "\nNumer rejestracyjny: " + route.getTruckReg() ;
+
                 truckInfoLiveData.setValue(displayText);
             }
             @Override

@@ -1,6 +1,7 @@
 package com.example.inz2;
 
 import com.example.inz2.Model.Route;
+import com.example.inz2.Model.RouteHistory;
 
 import java.util.List;
 import java.util.Map;
@@ -19,8 +20,8 @@ public interface InterfaceAPI {
     @GET("/getRouteData")
     Call<Route> getRouteData(@Header("Authorization") String authToken);
 
-    @GET("?????")
-    Call<List<Package>> getHistoryPackages(@Header("Authorization") String authToken);
+    @GET("/routeHistory")
+    Call<List<RouteHistory>> getRouteHistory(@Header("Authorization") String authToken);
 
     @POST("/commissionLoaded")
     Call<Void> commissionLoaded(@Header("Authorization") String authToken, @Query("id") int id);

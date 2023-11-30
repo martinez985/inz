@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.inz2.Model.DataPackage;
 import com.example.inz2.Model.Route;
+import com.example.inz2.Model.RouteHistory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -53,5 +54,25 @@ public class PackageRepository {
         return packagesLiveData;
     }
 
+    public LiveData<List<RouteHistory>> getRouteHistory(String token) {
+        MutableLiveData<List<RouteHistory>> data = new MutableLiveData<>();
+
+        Call<List<RouteHistory>> call = apiService.getRouteHistory("Bearer " + token);
+        call.enqueue(new Callback<List<RouteHistory>>() {
+            @Override
+            public void onResponse(Call<List<RouteHistory>> call, Response<List<RouteHistory>> response) {
+                if (response.isSuccessful()) {
+                    data.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<RouteHistory>> call, Throwable t) {
+
+            }
+        });
+
+        return data;
+    }
 
 }

@@ -13,7 +13,7 @@
         android:background="@drawable/purple_rectangle"
         android:elevation="20dp"
         android:gravity="center"
-        android:text="Nie masz obecnie przypisanej ciężarówki"
+        android:text="Nie masz obecnie przypisanego przejazdu"
         android:textSize="24sp"
 
         app:layout_constraintBottom_toBottomOf="parent"

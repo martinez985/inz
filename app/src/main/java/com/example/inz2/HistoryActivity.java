@@ -49,11 +49,11 @@ public class HistoryActivity extends AppCompatActivity {
 
     private void observeViewModel() {
         String JWTToken = readTokenFromSharedPreferences();
-        viewModel.getFilteredPackages().observe(this, packages -> {
-            if (packages != null) {
-                adapter.updateData(packages);
+        viewModel.getRouteHistory(JWTToken).observe(this, routeHistoryList -> {
+            if (routeHistoryList != null) {
+                adapter.updateData(routeHistoryList);
                 TextView noHistoryTextView = findViewById(R.id.noHistoryTextView);
-                noHistoryTextView.setVisibility(packages.isEmpty() ? View.VISIBLE : View.GONE);
+                noHistoryTextView.setVisibility(routeHistoryList.isEmpty() ? View.VISIBLE : View.GONE);
             }
         });
     }

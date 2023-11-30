@@ -18,8 +18,12 @@ public class Route implements Serializable {
     private String name;
     @SerializedName("date")
     private String date;
+    @SerializedName("dateEnd")
+    private String dateEnd;
     @SerializedName("zipCode")
     private String zipCode;
+    @SerializedName("zipCodeEnd")
+    private String zipCodeEnd;
     @SerializedName("houseNumber")
     private String houseNumber;
     @SerializedName("gpsX")
@@ -28,8 +32,12 @@ public class Route implements Serializable {
     private Double gpsY;
     @SerializedName("address")
     private String address;
+    @SerializedName("addressEnd")
+    private String addressEnd;
     @SerializedName("city")
     private String city;
+    @SerializedName("cityEnd")
+    private String cityEnd;
     @SerializedName("driver")
     private String driver;
     @SerializedName("description")
@@ -39,19 +47,24 @@ public class Route implements Serializable {
 
     // konstruktory, gettery i settery
 
-    public Route(Integer route_id, String truckModel, String truckReg, String trailerDesc, String name, String date, String zipCode, String houseNumber, Double gpsX, Double gpsY, String address, String city, String driver, String description, List<DataPackage> dataPackages) {
+
+    public Route(Integer route_id, String truckModel, String truckReg, String trailerDesc, String name, String date, String dateEnd, String zipCode, String zipCodeEnd, String houseNumber, Double gpsX, Double gpsY, String address, String addressEnd, String city, String cityEnd, String driver, String description, List<DataPackage> dataPackages) {
         this.route_id = route_id;
         this.truckModel = truckModel;
         this.truckReg = truckReg;
         this.trailerDesc = trailerDesc;
         this.name = name;
         this.date = date;
+        this.dateEnd = dateEnd;
         this.zipCode = zipCode;
+        this.zipCodeEnd = zipCodeEnd;
         this.houseNumber = houseNumber;
         this.gpsX = gpsX;
         this.gpsY = gpsY;
         this.address = address;
+        this.addressEnd = addressEnd;
         this.city = city;
+        this.cityEnd = cityEnd;
         this.driver = driver;
         this.description = description;
         this.dataPackages = dataPackages;
@@ -177,4 +190,43 @@ public class Route implements Serializable {
         this.dataPackages = dataPackages;
     }
 
+    public String getDateEnd() {
+        return dateEnd;
+    }
+
+    public void setDateEnd(String dateEnd) {
+        this.dateEnd = dateEnd;
+    }
+
+    public String getAddressEnd() {
+        return addressEnd;
+    }
+
+    public void setAddressEnd(String addressEnd) {
+        this.addressEnd = addressEnd;
+    }
+
+    public String getCityEnd() {
+        return cityEnd;
+    }
+
+    public void setCityEnd(String cityEnd) {
+        this.cityEnd = cityEnd;
+    }
+
+    public List<DataPackage> getDataPackages() {
+        return dataPackages;
+    }
+
+    public void setDataPackages(List<DataPackage> dataPackages) {
+        this.dataPackages = dataPackages;
+    }
+
+    public String getZipCodeEnd() {
+        return zipCodeEnd;
+    }
+
+    public void setZipCodeEnd(String zipCodeEnd) {
+        this.zipCodeEnd = zipCodeEnd;
+    }
 }

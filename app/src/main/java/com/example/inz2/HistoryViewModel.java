@@ -5,37 +5,22 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.inz2.Model.DataPackage;
+import com.example.inz2.Model.RouteHistory;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryViewModel extends ViewModel {
     private final PackageRepository repository;
-    private LiveData<List<DataPackage>> packagesLiveData;
+    private LiveData<List<RouteHistory>> routeHistoryLiveData;
 
     public HistoryViewModel() {
         this.repository = new PackageRepository();
     }
 
-    public LiveData<List<DataPackage>> getPackages(String token) {
-        packagesLiveData = repository.getPackages(token);
-        return packagesLiveData;
+    public LiveData<List<RouteHistory>> getRouteHistory(String token) {
+        routeHistoryLiveData = repository.getRouteHistory(token);
+        return routeHistoryLiveData;
     }
 
-    public LiveData<List<DataPackage>> getFilteredPackages() {
-        MutableLiveData<List<DataPackage>> filteredPackagesLiveData = new MutableLiveData<>();
-        List<DataPackage> originalPackages = packagesLiveData.getValue();
-
-        if (originalPackages != null) {
-            List<DataPackage> filteredPackages = new ArrayList<>();
-            for (DataPackage dataPackage : originalPackages) {
-                if (dataPackage.getIs_loaded() && dataPackage.getIs_unloaded()) {
-                    filteredPackages.add(dataPackage);
-                }
-            }
-            filteredPackagesLiveData.setValue(filteredPackages);
-        }
-
-        return filteredPackagesLiveData;
-    }
 }

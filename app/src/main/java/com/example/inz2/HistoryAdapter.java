@@ -11,17 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inz2.Model.DataPackage;
+import com.example.inz2.Model.RouteHistory;
 
 import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
 
-    private List<DataPackage> packageList;
+    private List<RouteHistory> routeHistoryList;
     private Context context;
 
-    public HistoryAdapter(Context context, List<DataPackage> packageList) {
+    public HistoryAdapter(Context context, List<RouteHistory> routeHistoryList) {
         this.context = context;
-        this.packageList = packageList;
+        this.routeHistoryList = routeHistoryList;
     }
 
     @NonNull
@@ -33,35 +34,37 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
     @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
-        DataPackage currentPackage = packageList.get(position);
-        holder.idTextView.setText("ID: " + currentPackage.getCommission_id());
-        holder.dateOfReceiptTextView.setText("Data odbioru: " + currentPackage.getDate_of_receipt());
+        RouteHistory currentRouteHistory = routeHistoryList.get(position);
+        holder.idTextView.setText("ID przejazdu: " + currentRouteHistory.getId());
+        holder.truckTextView.setText(currentRouteHistory.getTruck());
+        holder.startDateTextView.setText( currentRouteHistory.getDataStart());
+        holder.endDateTextView.setText( currentRouteHistory.getDataEnd());
 
-        holder.itemView.setOnClickListener(view -> {
-            Intent intent = new Intent(context, PackageDetailsActivity.class);
-            intent.putExtra("SelectedPackage", currentPackage);
-            context.startActivity(intent);
-        });
     }
 
     @Override
     public int getItemCount() {
-        return packageList.size();
+        return routeHistoryList.size();
     }
 
-    public void updateData(List<DataPackage> newData) {
-        packageList.clear();
-        packageList.addAll(newData);
+    public void updateData(List<RouteHistory> newData) {
+        routeHistoryList.clear();
+        routeHistoryList.addAll(newData);
         notifyDataSetChanged();
     }
+
     public class HistoryViewHolder extends RecyclerView.ViewHolder {
         private TextView idTextView;
-        private TextView dateOfReceiptTextView;
+        private TextView truckTextView;
+        private TextView startDateTextView;
+        private TextView endDateTextView;
 
         public HistoryViewHolder(@NonNull View itemView) {
             super(itemView);
             idTextView = itemView.findViewById(R.id.idTextView);
-            dateOfReceiptTextView = itemView.findViewById(R.id.dateOfReceiptTextView);
+            truckTextView = itemView.findViewById(R.id.truckTextView);
+            startDateTextView = itemView.findViewById(R.id.startDateTextView);
+            endDateTextView = itemView.findViewById(R.id.endDateTextView);
         }
     }
 }
