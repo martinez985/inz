@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
 
         button = findViewById(R.id.material_button);
@@ -75,10 +77,19 @@ public class MainActivity extends AppCompatActivity {
 
         loginViewModel.getLoginResponseLiveData().observe(this, loginResponse -> {
             if (loginResponse != null) {
-                String token = loginResponse.getToken();
-                saveTokenToSharedPreferences(token);
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(intent);
+                if(loginResponse.role.equals("Kierowca")){
+                    String token = loginResponse.getToken();
+                    saveTokenToSharedPreferences(token);
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                }else{
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("Błąd dostępu")
+                            .setMessage("Aplikacja przeznaczona tylko dla kierowców")
+                            .setPositiveButton("OK", (dialog, which) -> dialog.dismiss())
+                            .show();
+                }
+
             } else {
                 Log.e("Logowanie", "Błąd logowania");
             }
