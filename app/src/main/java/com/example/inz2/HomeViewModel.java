@@ -3,6 +3,10 @@ package com.example.inz2;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.StyleSpan;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -23,12 +27,7 @@ public class HomeViewModel extends ViewModel {
         repository.getRouteData(token, new Repository.IRouteDataResponse() {
             @Override
             public void onResponse(Route route) {
-                String displayText ="Punkt startu: \n"+ route.getZipCode()+" " + route.getCity()+" " + route.getAddress() +
-                        "\nPunkt końcowy:\n" + route.getZipCodeEnd()+" " + route.getCityEnd()+" " + route.getAddressEnd() +
-                        "\nModel: " + route.getTruckModel() +
-                        "\nNumer rejestracyjny: " + route.getTruckReg() ;
-
-                truckInfoLiveData.setValue(displayText);
+                routeInfoLiveData.setValue(route);
             }
             @Override
             public void onFailure(Throwable t) {
@@ -37,8 +36,8 @@ public class HomeViewModel extends ViewModel {
         });
     }
 
-    public LiveData<String> getTruckInfoLiveData() {
-        return truckInfoLiveData;
+    public LiveData<Route> getRouteInfoLiveData() {
+        return routeInfoLiveData;
     }
 
     public void refreshData(String token) {

@@ -35,13 +35,16 @@ public class PackageDetailsActivity extends AppCompatActivity {
             cityStartTextView.setText(selectedPackage.getDelivery_pickup().getCity());
 
             TextView addressStartTextView = findViewById(R.id.addressStartTextView);
-            addressStartTextView.setText(selectedPackage.getDelivery_pickup().getAddress());
+
+            String adressPickup = selectedPackage.getDelivery_pickup().getAddress() +" "+ selectedPackage.getDelivery_pickup().getHouse_number();
+            addressStartTextView.setText(adressPickup);
 
             TextView cityEndTextView = findViewById(R.id.cityEndTextView);
             cityEndTextView.setText(selectedPackage.getDelivery_endpoint().getCity());
 
             TextView addressEndTextView = findViewById(R.id.addressEndTextView);
-            addressEndTextView.setText(selectedPackage.getDelivery_endpoint().getAddress());
+            String adressEndpoint = selectedPackage.getDelivery_endpoint().getAddress() + " " + selectedPackage.getDelivery_endpoint().getHouse_number();
+            addressEndTextView.setText(adressEndpoint);
 
             TextView IDtextView = findViewById(R.id.IDtextView);
             IDtextView.setText(String.valueOf(selectedPackage.getCommission_id()));
