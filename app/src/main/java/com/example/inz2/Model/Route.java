@@ -26,6 +26,8 @@ public class Route implements Serializable {
     private String zipCodeEnd;
     @SerializedName("houseNumber")
     private String houseNumber;
+    @SerializedName("houseNumberEnd")
+    private String houseNumberEnd;
     @SerializedName("gpsX")
     private Double gpsX;
     @SerializedName("gpsY")
@@ -48,7 +50,7 @@ public class Route implements Serializable {
     // konstruktory, gettery i settery
 
 
-    public Route(Integer route_id, String truckModel, String truckReg, String trailerDesc, String name, String date, String dateEnd, String zipCode, String zipCodeEnd, String houseNumber, Double gpsX, Double gpsY, String address, String addressEnd, String city, String cityEnd, String driver, String description, List<DataPackage> dataPackages) {
+    public Route(Integer route_id, String truckModel, String truckReg, String trailerDesc, String name, String date, String dateEnd, String zipCode, String zipCodeEnd, String houseNumber, String houseNumberEnd, Double gpsX, Double gpsY, String address, String addressEnd, String city, String cityEnd, String driver, String description, List<DataPackage> dataPackages) {
         this.route_id = route_id;
         this.truckModel = truckModel;
         this.truckReg = truckReg;
@@ -59,6 +61,7 @@ public class Route implements Serializable {
         this.zipCode = zipCode;
         this.zipCodeEnd = zipCodeEnd;
         this.houseNumber = houseNumber;
+        this.houseNumberEnd = houseNumberEnd;
         this.gpsX = gpsX;
         this.gpsY = gpsY;
         this.address = address;
@@ -228,5 +231,13 @@ public class Route implements Serializable {
 
     public void setZipCodeEnd(String zipCodeEnd) {
         this.zipCodeEnd = zipCodeEnd;
+    }
+
+    public String getHouseNumberEnd() {
+        return houseNumberEnd;
+    }
+
+    public void setHouseNumberEnd(String houseNumberEnd) {
+        this.houseNumberEnd = houseNumberEnd;
     }
 }
