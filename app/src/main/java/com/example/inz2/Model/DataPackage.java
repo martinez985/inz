@@ -31,6 +31,10 @@ public class DataPackage implements Serializable {
     private Address delivery_pickup;
     @SerializedName("delivery_endpoint")
     private Address delivery_endpoint;
+    @SerializedName("point_number_start")
+    private Integer point_number_start;
+    @SerializedName("point_number_end")
+    private Integer point_number_end;
     @SerializedName("y")
     private Double y;
     @SerializedName("x")
@@ -40,7 +44,8 @@ public class DataPackage implements Serializable {
 
     // konstruktory, gettery i settery
 
-    public DataPackage(Integer commission_id, String date_of_placement, String date_of_receipt, String description, Double mass, Boolean stackable, Integer count, Boolean is_loaded, Boolean is_unloaded, Integer canceled, User user, Address delivery_pickup, Address delivery_endpoint, Double y, Double x, Double z) {
+
+    public DataPackage(Integer commission_id, String date_of_placement, String date_of_receipt, String description, Double mass, Boolean stackable, Integer count, Boolean is_loaded, Boolean is_unloaded, Integer canceled, User user, Address delivery_pickup, Address delivery_endpoint, Integer point_number_start, Integer point_number_end, Double y, Double x, Double z) {
         this.commission_id = commission_id;
         this.date_of_placement = date_of_placement;
         this.date_of_receipt = date_of_receipt;
@@ -54,6 +59,8 @@ public class DataPackage implements Serializable {
         this.user = user;
         this.delivery_pickup = delivery_pickup;
         this.delivery_endpoint = delivery_endpoint;
+        this.point_number_start = point_number_start;
+        this.point_number_end = point_number_end;
         this.y = y;
         this.x = x;
         this.z = z;
@@ -185,5 +192,21 @@ public class DataPackage implements Serializable {
 
     public void setZ(Double z) {
         this.z = z;
+    }
+
+    public Integer getPoint_number_start() {
+        return point_number_start;
+    }
+
+    public void setPoint_number_start(Integer point_number_start) {
+        this.point_number_start = point_number_start;
+    }
+
+    public Integer getPoint_number_end() {
+        return point_number_end;
+    }
+
+    public void setPoint_number_end(Integer point_number_end) {
+        this.point_number_end = point_number_end;
     }
 }

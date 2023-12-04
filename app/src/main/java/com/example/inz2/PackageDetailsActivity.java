@@ -34,7 +34,8 @@ public class PackageDetailsActivity extends AppCompatActivity {
 
         if (selectedPackage != null) {
             TextView cityStartTextView = findViewById(R.id.cityStartTextView);
-            cityStartTextView.setText(selectedPackage.getDelivery_pickup().getCity());
+            String cityStart =selectedPackage.getDelivery_pickup().getZip_code() + " " + selectedPackage.getDelivery_pickup().getCity();
+            cityStartTextView.setText(cityStart);
 
             TextView addressStartTextView = findViewById(R.id.addressStartTextView);
 
@@ -42,7 +43,8 @@ public class PackageDetailsActivity extends AppCompatActivity {
             addressStartTextView.setText(adressPickup);
 
             TextView cityEndTextView = findViewById(R.id.cityEndTextView);
-            cityEndTextView.setText(selectedPackage.getDelivery_endpoint().getCity());
+            String cityEnd = selectedPackage.getDelivery_endpoint().getZip_code() +" " + selectedPackage.getDelivery_endpoint().getCity();
+            cityEndTextView.setText(cityEnd);
 
             TextView addressEndTextView = findViewById(R.id.addressEndTextView);
             String adressEndpoint = selectedPackage.getDelivery_endpoint().getAddress() + " " + selectedPackage.getDelivery_endpoint().getHouse_number();
@@ -74,9 +76,35 @@ public class PackageDetailsActivity extends AppCompatActivity {
             boolean isStackable = selectedPackage.getStackable();
             StackableTextView.setText(isStackable ? "Tak" : "Nie");
 
+            TextView PointNumbers = findViewById(R.id.PointsTextView);
+            String points = "Załadowanie: " + selectedPackage.getPoint_number_start() + " Wyładowanie: " + selectedPackage.getPoint_number_end();
+            PointNumbers.setText(points);
             TextView descriptionTextView = findViewById(R.id.descriptionTextView);
             String description = selectedPackage.getDescription();
 
+            TextView GPSText = findViewById(R.id.textGPS);
+            TextView GPSTextView = findViewById(R.id.GPSTextView);
+            String gps = "";
+            if(selectedPackage.getDelivery_pickup().getGps_X() == null
+                    && selectedPackage.getDelivery_pickup().getGps_Y() == null
+                    && selectedPackage.getDelivery_endpoint().getGps_X() == null
+                    && selectedPackage.getDelivery_endpoint().getGps_Y() == null){
+                GPSTextView.setVisibility(View.GONE);
+                GPSText.setVisibility(View.GONE);
+            }
+            if(selectedPackage.getDelivery_pickup().getGps_X() != null
+                    && selectedPackage.getDelivery_pickup().getGps_Y() != null){
+                GPSTextView.setVisibility(View.VISIBLE);
+                GPSText.setVisibility(View.VISIBLE);
+                gps = "Punkt początkowy φ/λ: " + selectedPackage.getDelivery_pickup().getGps_X() + "/" +selectedPackage.getDelivery_pickup().getGps_Y();
+            }
+            if(selectedPackage.getDelivery_pickup().getGps_X() != null
+                    && selectedPackage.getDelivery_pickup().getGps_Y() != null){
+                GPSTextView.setVisibility(View.VISIBLE);
+                GPSText.setVisibility(View.VISIBLE);
+                gps += "\nPunkt końcowy φ/λ: " + selectedPackage.getDelivery_endpoint().getGps_X() + "/" +selectedPackage.getDelivery_endpoint().getGps_Y();
+            }
+            GPSTextView.setText(gps);
             if (description != null && !description.isEmpty()) {
                 descriptionTextView.setText(description);
             } else {
