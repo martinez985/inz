@@ -41,7 +41,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
 
 
     public static class AddressViewHolder extends RecyclerView.ViewHolder {
-        private TextView addressTextView;
+        private TextView addressTextView, cityTextView, PointTextView;
         private AddressAdapter adapter;
         private Button loadButton, unloadButton, undoButton;
         private TextView IDTextView;
@@ -54,7 +54,8 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
             this.loadButton = itemView.findViewById(R.id.loadedButton);
             this.unloadButton = itemView.findViewById(R.id.deliveredButton);
             this.undoButton = itemView.findViewById(R.id.undoButton);
-
+            this.cityTextView = itemView.findViewById(R.id.textCity);
+            this.PointTextView = itemView.findViewById(R.id.PointtextView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -123,6 +124,8 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_address, parent, false);
         AddressViewHolder holder = new AddressViewHolder(view, this);
         holder.IDTextView = view.findViewById(R.id.IDtextView);
+        holder.cityTextView = view.findViewById(R.id.textCity);
+        holder.PointTextView = view.findViewById(R.id.PointtextView);
         holder.addressTextView = view.findViewById(R.id.addressTextView);
         holder.loadButton = view.findViewById(R.id.loadedButton);
         holder.unloadButton = view.findViewById(R.id.deliveredButton);
@@ -139,12 +142,17 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
             holder.loadButton.setVisibility(View.VISIBLE);
             holder.unloadButton.setVisibility(View.INVISIBLE);
             holder.undoButton.setVisibility(View.GONE);
+            //String address = currentPackage.getDelivery_pickup().getAddress() + " " + currentPackage.getDelivery_pickup().getHouse_number();
             holder.addressTextView.setText(currentPackage.getDelivery_pickup().getAddress());
+            holder.cityTextView.setText(currentPackage.getDelivery_pickup().getCity());
+            holder.PointTextView.setText(String.valueOf(currentPackage.getPoint_number_start()));
         } else {
             holder.loadButton.setVisibility(View.GONE);
             holder.unloadButton.setVisibility(View.VISIBLE);
             holder.undoButton.setVisibility(View.VISIBLE);
             holder.addressTextView.setText(currentPackage.getDelivery_endpoint().getAddress());
+            holder.cityTextView.setText(currentPackage.getDelivery_endpoint().getCity());
+            holder.PointTextView.setText(String.valueOf(currentPackage.getPoint_number_end()));
         }
     }
 

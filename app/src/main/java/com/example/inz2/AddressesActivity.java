@@ -31,8 +31,8 @@ import retrofit2.Retrofit;
 
 public class AddressesActivity extends AppCompatActivity {
 
-    private CityAdapter cityAdapter;
-    private CityAdapter loadedCityAdapter;
+    private AddressAdapter addressAdapter;
+    private AddressAdapter loadedAddressAdapter;
     private AddressesViewModel viewModel;
     private Button finish;
 
@@ -44,17 +44,16 @@ public class AddressesActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(AddressesViewModel.class);
 
+        loadedAddressAdapter = new AddressAdapter(new ArrayList<>());
+        addressAdapter = new AddressAdapter(new ArrayList<>());
 
-        loadedCityAdapter = new CityAdapter(new ArrayList<>(), new HashMap<>());
-
-        cityAdapter = new CityAdapter(new ArrayList<>(), new HashMap<>());
         RecyclerView recyclerView = findViewById(R.id.addressRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(cityAdapter);
+        recyclerView.setAdapter(addressAdapter);
 
         RecyclerView loadedRecyclerView = findViewById(R.id.addressRecyclerView2);
         loadedRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        loadedRecyclerView.setAdapter(loadedCityAdapter);
+        loadedRecyclerView.setAdapter(loadedAddressAdapter);
 
         observeViewModel();
 
@@ -86,7 +85,6 @@ public class AddressesActivity extends AppCompatActivity {
                         }
                     }
                 });
-
             }
         });
     }
@@ -94,23 +92,23 @@ public class AddressesActivity extends AppCompatActivity {
     private void observeViewModel() {
         String token = readTokenFromSharedPreferences();
 
-        viewModel.getUnloadedPackagesByCity(token).observe(this, unloadedPackagesByCity -> {
-            if (unloadedPackagesByCity != null && !unloadedPackagesByCity.isEmpty()) {
-                cityAdapter.updateData(new ArrayList<>(unloadedPackagesByCity.keySet()), unloadedPackagesByCity);
+        viewModel.getUnloadedPackagesByCity(token).observe(this, unloadedPackages -> {
+            if (unloadedPackages != null && !unloadedPackages.isEmpty()) {
+                addressAdapter.updateData(unloadedPackages);
                 findViewById(R.id.noPackagesUnloadedTextView).setVisibility(View.GONE);
             } else {
-                cityAdapter.updateData(new ArrayList<>(unloadedPackagesByCity.keySet()), unloadedPackagesByCity);
+                addressAdapter.updateData(new ArrayList<>());
                 findViewById(R.id.noPackagesUnloadedTextView).setVisibility(View.VISIBLE);
                 ((TextView) findViewById(R.id.noPackagesUnloadedTextView)).setText("Brak paczek do załadowania");
             }
         });
 
-        viewModel.getLoadedPackagesByCity(token).observe(this, loadedPackagesByCity -> {
-            if (loadedPackagesByCity != null && !loadedPackagesByCity.isEmpty()) {
-                loadedCityAdapter.updateData(new ArrayList<>(loadedPackagesByCity.keySet()), loadedPackagesByCity);
+        viewModel.getLoadedPackagesByCity(token).observe(this, loadedPackages -> {
+            if (loadedPackages != null && !loadedPackages.isEmpty()) {
+                loadedAddressAdapter.updateData(loadedPackages);
                 findViewById(R.id.noPackagesLoadedTextView).setVisibility(View.GONE);
             } else {
-                loadedCityAdapter.updateData(new ArrayList<>(loadedPackagesByCity.keySet()), loadedPackagesByCity);
+                loadedAddressAdapter.updateData(new ArrayList<>());
                 findViewById(R.id.noPackagesLoadedTextView).setVisibility(View.VISIBLE);
                 ((TextView) findViewById(R.id.noPackagesLoadedTextView)).setText("Brak paczek do wyładowania");
             }
@@ -122,6 +120,7 @@ public class AddressesActivity extends AppCompatActivity {
             } else {
                 finish.setVisibility(View.GONE);
             }
+
         });
     }
 
