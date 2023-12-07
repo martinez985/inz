@@ -1,6 +1,10 @@
-package com.example.inz2;
+package com.example.inz2.repository;
 
+import com.example.inz2.dto.LoginBody;
+import com.example.inz2.dto.LoginResponse;
 import com.example.inz2.Model.Route;
+import com.example.inz2.api.InterfaceAPI;
+import com.example.inz2.api.RetrofitClientInstance;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,18 +48,17 @@ public class Repository {
 
         routeCall.enqueue(new Callback<Route>() {
             @Override
-            public void onResponse(Call<Route> call, Response<Route> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    Route route = response.body();
-                    routeDataResponse.onResponse(route);
-                } else {
-                    routeDataResponse.onFailure(new Exception("Błąd podczas pobierania danych trasy"));
+            public void onResponse( Call<Route> call, Response<Route> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Route route = response.body();
+                        routeDataResponse.onResponse(route);
+                    }
                 }
             }
-
             @Override
             public void onFailure(Call<Route> call, Throwable t) {
-                routeDataResponse.onFailure(t);
+                routeDataResponse.onResponse(null);
             }
         });
     }

@@ -1,45 +1,23 @@
 package com.example.inz2;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.MutableLiveData;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import com.example.inz2.ViewModel.LoginViewModel;
+import com.example.inz2.activity.HomeActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Button button;
@@ -77,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         loginViewModel.getLoginResponseLiveData().observe(this, loginResponse -> {
             if (loginResponse != null) {
-                if(loginResponse.role.equals("Kierowca")){
+                if(loginResponse.getRole().equals("Kierowca")){
                     String token = loginResponse.getToken();
                     saveTokenToSharedPreferences(token);
                     Intent intent = new Intent(MainActivity.this, HomeActivity.class);

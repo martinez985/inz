@@ -1,13 +1,11 @@
-package com.example.inz2;
+package com.example.inz2.ViewModel;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.inz2.Model.DataPackage;
 import com.example.inz2.Model.RouteHistory;
+import com.example.inz2.repository.PackageRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryViewModel extends ViewModel {

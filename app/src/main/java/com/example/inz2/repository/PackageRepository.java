@@ -1,4 +1,4 @@
-package com.example.inz2;
+package com.example.inz2.repository;
 
 import android.util.Log;
 
@@ -8,10 +8,10 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.inz2.Model.DataPackage;
 import com.example.inz2.Model.Route;
 import com.example.inz2.Model.RouteHistory;
+import com.example.inz2.api.InterfaceAPI;
+import com.example.inz2.api.RetrofitClientInstance;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;

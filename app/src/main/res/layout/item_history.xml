@@ -5,14 +5,14 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
+  <!--  <TextView
         android:id="@+id/idTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ID: "
         android:textSize="18sp"
         android:textStyle="bold" />
-
+-->
     <TextView
         android:id="@+id/truckLabelTextView"
         android:layout_width="wrap_content"

@@ -1,4 +1,4 @@
-package com.example.inz2;
+package com.example.inz2.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -8,20 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.inz2.Model.DataPackage;
+import com.example.inz2.adapter.HistoryAdapter;
+import com.example.inz2.ViewModel.HistoryViewModel;
+import com.example.inz2.R;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class HistoryActivity extends AppCompatActivity {
 

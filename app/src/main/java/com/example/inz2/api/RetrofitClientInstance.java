@@ -1,4 +1,4 @@
-package com.example.inz2;
+package com.example.inz2.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

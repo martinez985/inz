@@ -1,4 +1,4 @@
-package com.example.inz2;
+package com.example.inz2.ViewModel;
 
 import android.util.Log;
 
@@ -7,15 +7,16 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
+import com.example.inz2.api.InterfaceAPI;
 import com.example.inz2.Model.DataPackage;
 import com.example.inz2.Model.Route;
+import com.example.inz2.repository.PackageRepository;
+import com.example.inz2.api.RetrofitClientInstance;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +32,7 @@ public class AddressesViewModel extends ViewModel {
     private MutableLiveData<Boolean> allPackagesCompletedLiveData = new MutableLiveData<>();
     private MutableLiveData<Integer> routeIdLiveData = new MutableLiveData<>();
     private RouteClosedListener routeClosedListener;
+
 
     public interface RouteClosedListener {
         void onRouteClosed();
@@ -139,6 +141,7 @@ public class AddressesViewModel extends ViewModel {
                     if (routeClosedListener != null) {
                         routeClosedListener.onRouteClosed();
                     }
+                    //tutaj
                 } else {
                     Log.e("EndRoute", "Błąd w odpowiedzi z serwera");
                 }

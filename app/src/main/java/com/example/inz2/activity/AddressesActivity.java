@@ -1,4 +1,4 @@
-package com.example.inz2;
+package com.example.inz2.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -16,18 +15,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.inz2.Model.DataPackage;
-import com.example.inz2.Model.Route;
+import com.example.inz2.R;
+import com.example.inz2.adapter.AddressAdapter;
+import com.example.inz2.ViewModel.AddressesViewModel;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class AddressesActivity extends AppCompatActivity {
 
@@ -45,8 +37,8 @@ public class AddressesActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this).get(AddressesViewModel.class);
 
         loadedAddressAdapter = new AddressAdapter(new ArrayList<>());
-        addressAdapter = new AddressAdapter(new ArrayList<>());
 
+        addressAdapter = new AddressAdapter(new ArrayList<>());
         RecyclerView recyclerView = findViewById(R.id.addressRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(addressAdapter);
@@ -70,9 +62,7 @@ public class AddressesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String token = readTokenFromSharedPreferences();
-
                 viewModel.fetchRouteData(token);
-
                 viewModel.getRouteIdLiveData().observe(AddressesActivity.this, new Observer<Integer>() {
                     @Override
                     public void onChanged(Integer routeId) {

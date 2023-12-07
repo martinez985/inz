@@ -1,7 +1,11 @@
-package com.example.inz2;
+package com.example.inz2.ViewModel;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.inz2.dto.LoginBody;
+import com.example.inz2.dto.LoginResponse;
+import com.example.inz2.repository.Repository;
 
 
 public class LoginViewModel extends ViewModel {

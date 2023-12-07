@@ -1,7 +1,6 @@
-package com.example.inz2;
+package com.example.inz2.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.inz2.Model.DataPackage;
 import com.example.inz2.Model.RouteHistory;
+import com.example.inz2.R;
 
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
     @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
         RouteHistory currentRouteHistory = routeHistoryList.get(position);
-        holder.idTextView.setText("ID przejazdu: " + currentRouteHistory.getId());
+       // holder.idTextView.setText("ID przejazdu: " + currentRouteHistory.getId());
         holder.truckTextView.setText(currentRouteHistory.getTruck());
         holder.startDateTextView.setText( currentRouteHistory.getDataStart());
         holder.endDateTextView.setText( currentRouteHistory.getDataEnd());
@@ -61,7 +60,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
         public HistoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            idTextView = itemView.findViewById(R.id.idTextView);
+            //idTextView = itemView.findViewById(R.id.idTextView);
             truckTextView = itemView.findViewById(R.id.truckTextView);
             startDateTextView = itemView.findViewById(R.id.startDateTextView);
             endDateTextView = itemView.findViewById(R.id.endDateTextView);

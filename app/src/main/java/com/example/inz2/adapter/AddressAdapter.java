@@ -1,4 +1,4 @@
-package com.example.inz2;
+package com.example.inz2.adapter;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -16,10 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inz2.Model.DataPackage;
+import com.example.inz2.R;
+import com.example.inz2.api.RetrofitClientInstance;
+import com.example.inz2.activity.AddressesActivity;
+import com.example.inz2.activity.PackageDetailsActivity;
+import com.example.inz2.api.InterfaceAPI;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -142,6 +145,9 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.AddressV
             holder.loadButton.setVisibility(View.VISIBLE);
             holder.unloadButton.setVisibility(View.INVISIBLE);
             holder.undoButton.setVisibility(View.GONE);
+            holder.addressTextView.setText(currentPackage.getDelivery_pickup().getAddress());
+            holder.cityTextView.setText(currentPackage.getDelivery_pickup().getCity());
+
             //String address = currentPackage.getDelivery_pickup().getAddress() + " " + currentPackage.getDelivery_pickup().getHouse_number();
             holder.addressTextView.setText(currentPackage.getDelivery_pickup().getAddress());
             holder.cityTextView.setText(currentPackage.getDelivery_pickup().getCity());

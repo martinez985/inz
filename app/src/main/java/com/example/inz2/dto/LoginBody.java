@@ -1,4 +1,4 @@
-package com.example.inz2;
+package com.example.inz2.dto;
 
 import com.google.gson.annotations.SerializedName;
 
