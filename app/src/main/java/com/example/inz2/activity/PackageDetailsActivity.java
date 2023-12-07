@@ -1,4 +1,4 @@
-package com.example.inz2;
+package com.example.inz2.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.inz2.Model.DataPackage;
+import com.example.inz2.R;
 
 public class PackageDetailsActivity extends AppCompatActivity {
 
@@ -98,8 +99,8 @@ public class PackageDetailsActivity extends AppCompatActivity {
                 GPSText.setVisibility(View.VISIBLE);
                 gps = "Punkt początkowy φ/λ: " + selectedPackage.getDelivery_pickup().getGps_X() + "/" +selectedPackage.getDelivery_pickup().getGps_Y();
             }
-            if(selectedPackage.getDelivery_pickup().getGps_X() != null
-                    && selectedPackage.getDelivery_pickup().getGps_Y() != null){
+            if(selectedPackage.getDelivery_endpoint().getGps_X() != null
+                    && selectedPackage.getDelivery_endpoint().getGps_Y() != null){
                 GPSTextView.setVisibility(View.VISIBLE);
                 GPSText.setVisibility(View.VISIBLE);
                 gps += "\nPunkt końcowy φ/λ: " + selectedPackage.getDelivery_endpoint().getGps_X() + "/" +selectedPackage.getDelivery_endpoint().getGps_Y();

@@ -1,18 +1,11 @@
-package com.example.inz2;
-
-import static android.content.Context.MODE_PRIVATE;
-
-import android.content.SharedPreferences;
-import android.graphics.Typeface;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.StyleSpan;
+package com.example.inz2.ViewModel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.inz2.Model.Route;
+import com.example.inz2.repository.Repository;
 
 public class HomeViewModel extends ViewModel {
     private final MutableLiveData<String> truckInfoLiveData = new MutableLiveData<>();
@@ -23,11 +16,15 @@ public class HomeViewModel extends ViewModel {
         this.repository = new Repository();
     }
 
-    public void fetchDataForTruck(String token) {
+    public void fetchDataForRoute(String token) {
         repository.getRouteData(token, new Repository.IRouteDataResponse() {
             @Override
             public void onResponse(Route route) {
-                routeInfoLiveData.setValue(route);
+                if (route != null) {
+                    routeInfoLiveData.setValue(route);
+                } else {
+                    routeInfoLiveData.setValue(null);
+                }
             }
             @Override
             public void onFailure(Throwable t) {
@@ -42,9 +39,11 @@ public class HomeViewModel extends ViewModel {
 
     public void refreshData(String token) {
         truckInfoLiveData.setValue(null);
-        fetchDataForTruck(token);
+        fetchDataForRoute(token);
     }
     public void clearData() {
         truckInfoLiveData.setValue(null);
     }
+
+
 }

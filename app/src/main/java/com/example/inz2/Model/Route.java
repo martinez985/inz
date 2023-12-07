@@ -32,6 +32,10 @@ public class Route implements Serializable {
     private Double gpsX;
     @SerializedName("gpsY")
     private Double gpsY;
+    @SerializedName("gpsXEnd")
+    private Double gpsXEnd;
+    @SerializedName("gpsYEnd")
+    private Double gpsYEnd;
     @SerializedName("address")
     private String address;
     @SerializedName("addressEnd")
@@ -47,10 +51,8 @@ public class Route implements Serializable {
     @SerializedName("packages")
     private List<DataPackage> dataPackages;
 
-    // konstruktory, gettery i settery
 
-
-    public Route(Integer route_id, String truckModel, String truckReg, String trailerDesc, String name, String date, String dateEnd, String zipCode, String zipCodeEnd, String houseNumber, String houseNumberEnd, Double gpsX, Double gpsY, String address, String addressEnd, String city, String cityEnd, String driver, String description, List<DataPackage> dataPackages) {
+    public Route(Integer route_id, String truckModel, String truckReg, String trailerDesc, String name, String date, String dateEnd, String zipCode, String zipCodeEnd, String houseNumber, String houseNumberEnd, Double gpsX, Double gpsY, Double gpsXEnd, Double gpsYEnd, String address, String addressEnd, String city, String cityEnd, String driver, String description, List<DataPackage> dataPackages) {
         this.route_id = route_id;
         this.truckModel = truckModel;
         this.truckReg = truckReg;
@@ -64,6 +66,8 @@ public class Route implements Serializable {
         this.houseNumberEnd = houseNumberEnd;
         this.gpsX = gpsX;
         this.gpsY = gpsY;
+        this.gpsXEnd = gpsXEnd;
+        this.gpsYEnd = gpsYEnd;
         this.address = address;
         this.addressEnd = addressEnd;
         this.city = city;
@@ -239,5 +243,21 @@ public class Route implements Serializable {
 
     public void setHouseNumberEnd(String houseNumberEnd) {
         this.houseNumberEnd = houseNumberEnd;
+    }
+
+    public Double getGpsXEnd() {
+        return gpsXEnd;
+    }
+
+    public void setGpsXEnd(Double gpsXEnd) {
+        this.gpsXEnd = gpsXEnd;
+    }
+
+    public Double getGpsYEnd() {
+        return gpsYEnd;
+    }
+
+    public void setGpsYEnd(Double gpsYEnd) {
+        this.gpsYEnd = gpsYEnd;
     }
 }

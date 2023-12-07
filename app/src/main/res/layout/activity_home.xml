@@ -5,12 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".activity.HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/backgroundView"
         android:layout_width="326dp"
-        android:layout_height="294dp"
+        android:layout_height="450dp"
         android:background="@drawable/purple_rectangle"
         android:elevation="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,7 +35,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.409" />
+            app:layout_constraintVertical_bias="0.409"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/textViewStartTitle"
@@ -51,7 +52,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.047"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
         <!-- Data punktu Start -->
 
@@ -72,13 +73,13 @@
             android:text="Adres:"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.137"
-            android:visibility="gone"/>
+            app:layout_constraintVertical_bias="0.116" />
 
         <TextView
             android:id="@+id/textViewAdressStartDisplay"
@@ -87,13 +88,13 @@
             android:gravity="center"
             android:text="adres"
             android:textSize="16sp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.224"
-            android:visibility="gone"/>
+            app:layout_constraintVertical_bias="0.179" />
 
         <TextView
             android:id="@+id/textViewDateStart"
@@ -103,13 +104,13 @@
             android:text="Data:"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.307"
-            android:visibility="gone"/>
+            app:layout_constraintVertical_bias="0.247" />
 
         <TextView
             android:id="@+id/textViewDateStartDisplay"
@@ -118,13 +119,44 @@
             android:gravity="center"
             android:text="data"
             android:textSize="16sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.301" />
+
+        <TextView
+            android:id="@+id/GPSStartDisplay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Współrzędne geograficzne \n długość: szerokość"
+            android:textSize="16sp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.397"
-            android:visibility="gone"/>
+            app:layout_constraintVertical_bias="0.39" />
+
+
+        <TextView
+            android:id="@+id/GPSEndDisplay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Współrzędne geograficzne \n długość: szerokość"
+            android:textSize="16sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.734" />
 
         <TextView
             android:id="@+id/textViewEndTitle"
@@ -133,12 +165,12 @@
             android:text="Koniec trasy:"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.265"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textViewAdressEnd"
@@ -148,13 +180,13 @@
             android:text="Adres:"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.588"
-            android:visibility="gone"/>
+            app:layout_constraintVertical_bias="0.57" />
 
         <TextView
             android:id="@+id/textViewAdressEndDisplay"
@@ -163,13 +195,13 @@
             android:gravity="center"
             android:text="koniec adres"
             android:textSize="16sp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.669"
-            android:visibility="gone"/>
+            app:layout_constraintVertical_bias="0.623" />
 
         <TextView
             android:id="@+id/textViewTruck"
@@ -179,13 +211,13 @@
             android:text="Ciężarówka:"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.269"
+            app:layout_constraintHorizontal_bias="0.259"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.759"
-            android:visibility="gone"/>
+            app:layout_constraintVertical_bias="0.833" />
 
         <TextView
             android:id="@+id/textViewTruckDisplay"
@@ -194,13 +226,13 @@
             android:gravity="center"
             android:text="dane ciężarówki"
             android:textSize="16sp"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.888"
-            android:visibility="gone"/>
+            app:layout_constraintVertical_bias="0.925" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

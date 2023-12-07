@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">inz2</string>
+    <string name="item_address_id">ID:</string>
 </resources>

@@ -1,10 +1,11 @@
-package com.example.inz2;
+package com.example.inz2.api;
 
+import com.example.inz2.dto.LoginBody;
+import com.example.inz2.dto.LoginResponse;
 import com.example.inz2.Model.Route;
 import com.example.inz2.Model.RouteHistory;
 
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
